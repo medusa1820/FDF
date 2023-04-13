@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:29:15 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 21:59:08 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/13 22:28:07 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ long int	z_color(int z0, int z1)
 	return (445430015);
 }
 
-long int	zz_color(int z0)
+long int	zz_color(int z)
 {
-	if (z0 > 0)
+	if (z > 0)
 		return (4289344511);
-	else if (z0 == 0)
+	else if (z == 0)
 		return (100);
-	return (445430015);
+	else
+		return (445430015);
 }
 
 void	put_origin_0(float *x, float *y, t_fdf *data)

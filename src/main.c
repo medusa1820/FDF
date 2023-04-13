@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:09:30 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:08:18 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/13 22:20:45 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	print_map(t_fdf *data)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < data->height)
 	{
 		j = 0;

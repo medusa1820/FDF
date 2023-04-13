@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:47:50 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:08:08 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/13 22:28:59 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void	draw_bresenham(t_fdf *data)
 
 void	caller_func(float x, float y, t_fdf *data)
 {
-	float		z;
-	int			orig_x;
-	int			orig_y;
+	float	z;
+	int		orig_x;
+	int		orig_y;
 
 	orig_x = (int)x;
 	orig_y = (int)y;

@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:02 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:05:48 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/13 22:28:14 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_inter_coords
 {
 	float		x_step;
 	float		y_step;
-	float		max_step;
 }				t_inter_coords;
 
 typedef struct s_fdf
@@ -102,7 +101,7 @@ void		ft_scroll(double xdelta, double ydelta, t_fdf *data);
 
 // init_params.c
 long int	z_color(int z0, int z1);
-long int	zz_color(int z0);
+long int	zz_color(int z);
 void		put_origin_0(float *x, float *y, t_fdf *data);
 void		default_map(t_fdf *data);
 
@@ -115,7 +114,6 @@ int			main(int argc, char **argv);
 // read_file.c
 int			get_height(char *file_name, int *width);
 void		fill_map_matrix(int *matrix_line, char *line);
-// void		fill_matrix(int *z_line, char *line);
 void		width_false(t_fdf *data);
 void		read_file(char *file_name, t_fdf *data, int fd);
 
