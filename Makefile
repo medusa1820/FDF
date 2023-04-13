@@ -7,7 +7,8 @@ LDFLAGS = -flto -O3 -march=nocona -g
 
 SRC_DIR	=	./src/
 
-SRC		:=	draw_utils.c \
+SRC		:=	check.c \
+			draw_utils.c \
 			draw.c \
 			get_next_line_utils.c \
 			get_next_line.c \

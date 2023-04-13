@@ -6,17 +6,11 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:09:30 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 00:05:14 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/13 22:08:18 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	ft_error(char *msg)
-{
-	ft_printf("%s\n", msg);
-	exit(1);
-}
 
 void	free_stuff(t_fdf *data)
 {
@@ -53,26 +47,16 @@ void	print_map(t_fdf *data)
 	}
 }
 
-void	check_file(int argc, char *argv, int *fd)
-{
-	if (argc != 2)
-		ft_error("usage ./fdf <map_name>.fdf");
-	if (check_extension(argv) != 1)
-		ft_error("file extension wrong, must be <.fdf>");
-	*fd = open(argv, O_RDONLY, 0);
-	if (*fd <= 0)
-		ft_error("file doesnt exist");
-}
-
 void	mem_alloc(t_fdf *data)
 {
 	int	i;
 
-	i = 0;
-	data->inter_map = (t_cords **)malloc(sizeof(t_cords *) * (data->height + 1));
+	data->inter_map = \
+		(t_coords **)malloc(sizeof(t_coords *) * (data->height + 1));
 	i = 0;
 	while (i < data->height)
-		data->inter_map[i++] = (t_cords *)malloc(sizeof(t_cords) * (data->width + 1));
+		data->inter_map[i++] = \
+		(t_coords *)malloc(sizeof(t_coords) * (data->width + 1));
 	data->inter_map[i] = NULL;
 }
 
@@ -88,7 +72,7 @@ int	main(int argc, char **argv)
 	mem_alloc(data);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
-	// print_map(data);
+	print_map(data);
 	default_map(data);
 	draw(data);
 	mlx_loop_hook(data->mlx, (void (*)(void *))ft_hooks0, data);

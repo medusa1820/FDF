@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:29:15 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/12 22:12:59 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/13 21:59:08 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ long int	zz_color(int z0)
 	return (445430015);
 }
 
+void	put_origin_0(float *x, float *y, t_fdf *data)
+{
+	*x -= data->width / 2;
+	*y -= data->height / 2;
+}
+
 void	default_map(t_fdf *data)
 {
 	data->zoom = 10;
@@ -41,22 +47,6 @@ void	default_map(t_fdf *data)
 	data->rotate_angle_y = 0;
 	data->rotate_angle_z = 0;
 	data->iso_angle = 0.46365;
-}
-
-int	check_extension(char *fdf)
-{
-	int		name_len;
-	int		i;
-	char	*fdf_true;
-
-	fdf_true = ".fdf";
-	name_len = ft_strlen(fdf);
-	i = 0;
-	while (fdf[name_len - 1 - i] == fdf_true[3 - i])
-		i++;
-	if (i < 4)
-		return (0);
-	return (1);
 }
 
 /*
