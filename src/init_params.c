@@ -6,22 +6,13 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:29:15 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:28:07 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/15 23:19:43 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-long int	z_color(int z0, int z1)
-{
-	if ((z0 > 0 && z1 >= 0) || (z0 >= 0 && z1 > 0))
-		return (4289344511);
-	else if (z0 == 0 && z1 == 0)
-		return (100);
-	return (445430015);
-}
-
-long int	zz_color(int z)
+long int	color(int z)
 {
 	if (z > 0)
 		return (4289344511);
@@ -48,6 +39,26 @@ void	default_map(t_fdf *data)
 	data->rotate_angle_y = 0;
 	data->rotate_angle_z = 0;
 	data->iso_angle = 0.46365;
+}
+
+void	map_color_hor(t_fdf *data, int y, int x)
+{
+	if (data->inter_map[y][x].color == 4289344511 || \
+		data->inter_map[y][x + 1].color == 4289344511)
+		data->color = 4289344511;
+	if (data->inter_map[y][x].color == 445430015 || \
+		data->inter_map[y][x + 1].color == 445430015)
+		data->color = 445430015;
+}
+
+void	map_color_ver(t_fdf *data, int y, int x)
+{
+	if (data->inter_map[y][x].color == 4289344511 || \
+		data->inter_map[y + 1][x].color == 4289344511)
+		data->color = 4289344511;
+	if (data->inter_map[y][x].color == 445430015 || \
+		data->inter_map[y + 1][x].color == 445430015)
+		data->color = 445430015;
 }
 
 /*

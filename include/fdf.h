@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:02 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:28:14 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/15 23:20:18 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_cords
 {
 	float		x;
 	float		y;
+	long int	color;
 }				t_coords;
 
 typedef struct s_inter_coords
@@ -100,10 +101,11 @@ void		ft_hooks2(t_fdf *data);
 void		ft_scroll(double xdelta, double ydelta, t_fdf *data);
 
 // init_params.c
-long int	z_color(int z0, int z1);
-long int	zz_color(int z);
+long int	color(int z);
 void		put_origin_0(float *x, float *y, t_fdf *data);
 void		default_map(t_fdf *data);
+void		map_color_hor(t_fdf *data, int y, int x);
+void		map_color_ver(t_fdf *data, int y, int x);
 
 // main.c
 void		free_stuff(t_fdf *data);

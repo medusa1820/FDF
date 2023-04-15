@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:47:50 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:28:59 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/15 23:19:37 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	bresenham_hor(int x, int y, t_fdf *data)
 	y0 = data->inter_map[y][x].y;
 	x1 = data->inter_map[y][x + 1].x;
 	y1 = data->inter_map[y][x + 1].y;
+	data->color = 100;
+	map_color_hor(data, y, x);
 	data->inter_coords.x_step = x1 - x0;
 	data->inter_coords.y_step = y1 - y0;
 	max_step = find_max_mod_step(data->inter_coords.x_step, \
@@ -51,6 +53,8 @@ void	bresenham_ver(int x, int y, t_fdf *data)
 	y0 = data->inter_map[y][x].y;
 	x1 = data->inter_map[y + 1][x].x;
 	y1 = data->inter_map[y + 1][x].y;
+	data->color = 100;
+	map_color_ver(data, y, x);
 	data->inter_coords.x_step = x1 - x0;
 	data->inter_coords.y_step = y1 - y0;
 	max_step = find_max_mod_step(data->inter_coords.x_step, \
@@ -95,8 +99,8 @@ void	caller_func(float x, float y, t_fdf *data)
 
 	orig_x = (int)x;
 	orig_y = (int)y;
-	z = data->map_matrix[(int)y][(int)x] * data->amp_comp;
-	data->color = zz_color(z);
+	z = data->map_matrix[orig_y][orig_x] * data->amp_comp;
+	data->inter_map[orig_y][orig_x].color = color(z);
 	put_origin_0(&x, &y, data);
 	rotate_0(&x, &y, data, &z);
 	exp_shrink_0(data, &x, &y);
