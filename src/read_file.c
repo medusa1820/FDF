@@ -6,13 +6,13 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:30:53 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/06 21:37:10 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/15 23:30:20 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fdf.h"
 
-static int	ft_word_count(char const *s, char c)
+static int	ft_word_count_fdf(char const *s, char c)
 {
 	int	i;
 	int	word_count;
@@ -42,7 +42,7 @@ int	get_height(char *file_name, int *width)
 	fd = open(file_name, O_RDONLY, 0);
 	height = 0;
 	line = get_next_line(fd);
-	*width = ft_word_count(line, ' ');
+	*width = ft_word_count_fdf(line, ' ');
 	while (line)
 	{
 		height++;
@@ -93,7 +93,7 @@ void	read_file(char *file_name, t_fdf *data, int fd)
 	i = 0;
 	while (line)
 	{
-		if (data->width != ft_word_count(line, ' '))
+		if (data->width != ft_word_count_fdf(line, ' '))
 			data->width_false = 1;
 		fill_map_matrix(data->map_matrix[i++], line);
 		free(line);

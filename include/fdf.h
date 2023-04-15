@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:02 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/15 23:20:18 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/15 23:29:39 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void		mem_alloc(t_fdf *data);
 int			main(int argc, char **argv);
 
 // read_file.c
+static int	ft_word_count_fdf(char const *s, char c);
 int			get_height(char *file_name, int *width);
 void		fill_map_matrix(int *matrix_line, char *line);
 void		width_false(t_fdf *data);
