@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:09:30 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:20:45 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/16 12:00:45 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	main(int argc, char **argv)
 	mem_alloc(data);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
-	print_map(data);
 	default_map(data);
 	draw(data);
 	mlx_loop_hook(data->mlx, (void (*)(void *))ft_hooks0, data);
@@ -81,6 +80,10 @@ int	main(int argc, char **argv)
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 	free_stuff(data);
-	system("leaks fdf");
 	return (0);
 }
+
+/*
+print_map(data);
+system("leaks fdf");
+*/
