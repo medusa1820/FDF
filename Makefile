@@ -15,6 +15,7 @@ SRC		:=	check.c \
 			hook_fts.c \
 			init_params.c \
 			main.c \
+			parallel_projection.c \
 			read_file.c \
 			rotations.c
 

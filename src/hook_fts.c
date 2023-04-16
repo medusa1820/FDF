@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:41:01 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/06 20:10:51 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/16 15:07:25 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ void	ft_hooks0(t_fdf *data)
 		data->shift_x += 20;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_Z))
 	{
-		data->rotate_angle_z += 10 * PI / 180;
+		data->rotate_angle_z += 3 * PI / 180;
 		data->rotate = 'z';
+		printf("data->rotate_angle_z = %f\n", data->rotate_angle_z);
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_Q))
 	{
-		data->rotate_angle_z -= 10 * PI / 180;
+		data->rotate_angle_z -= 3 * PI / 180;
 		data->rotate = 'z';
 	}
 	ft_memset(data->img->pixels, 0, WIDTH * HEIGHT * BPP);
@@ -43,13 +44,17 @@ void	ft_hooks0(t_fdf *data)
 void	ft_hooks1(t_fdf *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_U))
-		data->iso_angle += 5 * PI / 180;
+		data->iso_angle += 3 * PI / 180;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_J))
-		data->iso_angle -= 5 * PI / 180;
+		data->iso_angle -= 3 * PI / 180;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 		data->amp_comp += 0.15;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_C))
 		data->amp_comp -= 0.15;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_B))
+		parallel_x(data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_N))
+		parallel_y(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_E))
 	{
 		data->exp_shrink += 0.1;
@@ -68,26 +73,29 @@ void	ft_hooks2(t_fdf *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_X))
 	{
-		data->rotate_angle_x += 10 * PI / 180;
+		data->rotate_angle_x += 3 * PI / 180;
 		data->rotate = 'x';
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_V))
 	{
-		data->rotate_angle_x -= 10 * PI / 180;
+		data->rotate_angle_x -= 3 * PI / 180;
 		data->rotate = 'x';
+		printf("data->rotate_angle_x = %f\n", data->rotate_angle_x);
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_Y))
 	{
-		data->rotate_angle_y += 10 * PI / 180;
+		data->rotate_angle_y += 3 * PI / 180;
 		data->rotate = 'y';
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_I))
 	{
-		data->rotate_angle_y -= 10 * PI / 180;
+		data->rotate_angle_y -= 3 * PI / 180;
 		data->rotate = 'y';
 	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_M))
+		parallel_z(data);
 	ft_memset(data->img->pixels, 0, WIDTH * HEIGHT * BPP);
-	draw(data);
+	draw_bresenham(data);
 }
 
 void	ft_scroll(double xdelta, double ydelta, t_fdf *data)

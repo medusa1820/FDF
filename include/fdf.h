@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:02 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/15 23:29:39 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/16 14:07:24 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,11 @@ void		free_stuff(t_fdf *data);
 void		print_map(t_fdf *data);
 void		mem_alloc(t_fdf *data);
 int			main(int argc, char **argv);
+
+// parallel_projection.c
+void		parallel_x(t_fdf *data);
+void		parallel_y(t_fdf *data);
+void		parallel_z(t_fdf *data);
 
 // read_file.c
 static int	ft_word_count_fdf(char const *s, char c);
