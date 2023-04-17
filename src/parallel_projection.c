@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 12:40:54 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/16 15:15:00 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/17 20:32:28 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,62 @@ void	parallel_y(t_fdf *data)
 	data->iso_angle = 0;
 }
 
-void	bresenham_2D_hor(int x, int y, t_fdf *data)
+void	bresenham_2d_hor(int x, int y, t_fdf *data)
 {
-	
+	float	max_step;
+	float	x_step;
+	float	y_step;
+	float	x0;
+	float	y0;
+	float	x1;
+	float	y1;
+
+	x0 = x * data->zoom;
+	y0 = y * data->zoom;
+	x1 = (x + 1) * data->zoom;
+	y1 = y * data->zoom;
+	map_color_hor(data, y, x);
+	x_step = x1 - x0;
+	y_step = y1 - y0;
+	max_step = find_max_mod_step(x_step, y_step);
+	x_step = x_step / max_step;
+	y_step = y_step / max_step;
+	while ((int)(x0 - x1) || (int)(y0 - y1))
+	{
+		if ((x0 > 0 && x0 < WIDTH) && (y0 > 0 && y0 < HEIGHT))
+			mlx_put_pixel(data->img, x0 + WIDTH / 2, y0 + HEIGHT / 2, data->color);
+		x0 = x0 + x_step;
+		y0 = y0 + y_step;
+	}
+}
+
+void	bresenham_2d_ver(int x, int y, t_fdf *data)
+{
+	float	max_step;
+	float	x_step;
+	float	y_step;
+	float	x0;
+	float	y0;
+	float	x1;
+	float	y1;
+
+	x0 = x * data->zoom;
+	y0 = y * data->zoom;
+	x1 = x * data->zoom;
+	y1 = (y + 1) * data->zoom;
+	map_color_ver(data, y, x);
+	x_step = x1 - x0;
+	y_step = y1 - y0;
+	max_step = find_max_mod_step(x_step, y_step);
+	x_step = x_step / max_step;
+	y_step = y_step / max_step;
+	while ((int)(x0 - x1) || (int)(y0 - y1))
+	{
+		if ((x0 > 0 && x0 < WIDTH) && (y0 > 0 && y0 < HEIGHT))
+			mlx_put_pixel(data->img, x0 + WIDTH / 2, y0 + HEIGHT / 2, data->color);
+		x0 = x0 + x_step;
+		y0 = y0 + y_step;
+	}
 }
 
 void	parallel_z(t_fdf *data)
@@ -57,9 +110,9 @@ void	parallel_z(t_fdf *data)
 		while (x < data->width)
 		{
 			if (x < data->width - 1)
-				bresenham_2D_hor(x, y, data);
+				bresenham_2d_hor(x, y, data);
 			if (y < data->height - 1)
-				bresenham_2D_ver(x, y, data);
+				bresenham_2d_ver(x, y, data);
 			x++;
 		}
 		y++;

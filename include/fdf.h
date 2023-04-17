@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:02 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/16 14:07:24 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/17 20:16:31 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_fdf
 	char			rotate;
 	int				vertical_line;
 	int				width_false;
+	int				parallel_z;
 }					t_fdf;
 
 // check.c
