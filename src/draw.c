@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:47:50 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/17 20:14:57 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/17 21:09:01 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,24 +112,19 @@ void	caller_func(float x, float y, t_fdf *data)
 
 void	draw(t_fdf *data)
 {
-	int			x;
-	int			y;
+	int	x;
+	int	y;
 
-	if (data->parallel_z == 1)
-		parallel_z(data);
-	else
+	y = 0;
+	while (y < data->height)
 	{
-		y = 0;
-		while (y < data->height)
+		x = 0;
+		while (x < data->width)
 		{
-			x = 0;
-			while (x < data->width)
-			{
-				caller_func(x, y, data);
-				x++;
-			}
-			y++;
+			caller_func(x, y, data);
+			x++;
 		}
-		draw_bresenham(data);
+		y++;
 	}
+	draw_bresenham(data);
 }

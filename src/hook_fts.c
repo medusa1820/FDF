@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:41:01 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/17 20:16:25 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/17 21:06:12 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void	ft_hooks2(t_fdf *data)
 		data->rotate_angle_y -= 3 * PI / 180;
 		data->rotate = 'y';
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_M))
-		data->parallel_z = 1;
 	ft_memset(data->img->pixels, 0, WIDTH * HEIGHT * BPP);
 	draw(data);
 }

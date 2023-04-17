@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 21:58:36 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/13 22:01:04 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/17 21:45:20 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,21 @@ int	check_extension(char *fdf)
 void	check_file(int argc, char *argv, int *fd)
 {
 	if (argc != 2)
-		ft_error("usage ./fdf <map_name>.fdf");
+		ft_error("usage: ./fdf <map_name>.fdf");
 	if (check_extension(argv) != 1)
 		ft_error("file extension wrong, must be <.fdf>");
 	*fd = open(argv, O_RDONLY, 0);
 	if (*fd <= 0)
 		ft_error("file doesnt exist");
+}
+
+void	free_stuff(t_fdf *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->height)
+		free(data->map_matrix[i++]);
+	free(data->map_matrix);
+	free(data);
 }

@@ -37,9 +37,9 @@ libft_printf:
 	${MAKE} -C $(LIBFT_PRINTF_DIR) -j
 
 $(NAME):
-	$(CC) $(LDFLAGS) $(addprefix $(SRC_DIR),$(SRC)) $(HEADER) $(LIBMLX42) $(LIBGLFW) $(LIBFT_PRINTF) $(FRAMEWORK) \
-	-o $(NAME)
 # $(CC) $(LDFLAGS) $(addprefix $(SRC_DIR),$(SRC)) $(HEADER) $(LIBMLX42) $(LIBGLFW) $(LIBFT_PRINTF) $(FRAMEWORK) \
+	-o $(NAME)
+	$(CC) $(LDFLAGS) $(addprefix $(SRC_DIR),$(SRC)) $(HEADER) $(LIBMLX42) $(LIBGLFW) $(LIBFT_PRINTF) $(FRAMEWORK) \
 	-o $(NAME) -L ../LeakSanitizer -llsan -lc++ -Wno-gnu-include-next
 
 clean:

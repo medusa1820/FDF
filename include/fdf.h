@@ -6,7 +6,7 @@
 /*   By: musenov <musenov@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:02 by musenov           #+#    #+#             */
-/*   Updated: 2023/04/17 20:16:31 by musenov          ###   ########.fr       */
+/*   Updated: 2023/04/17 21:40:44 by musenov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_fdf
 void		ft_error(char *msg);
 int			check_extension(char *fdf);
 void		check_file(int argc, char *argv, int *fd);
+void		free_stuff(t_fdf *data);
 
 // draw_utils.c
 int			find_max_mod_step(float a, float b);
@@ -109,7 +110,7 @@ void		map_color_hor(t_fdf *data, int y, int x);
 void		map_color_ver(t_fdf *data, int y, int x);
 
 // main.c
-void		free_stuff(t_fdf *data);
+void		free_all(t_fdf *data);
 void		print_map(t_fdf *data);
 void		mem_alloc(t_fdf *data);
 int			main(int argc, char **argv);
@@ -117,7 +118,6 @@ int			main(int argc, char **argv);
 // parallel_projection.c
 void		parallel_x(t_fdf *data);
 void		parallel_y(t_fdf *data);
-void		parallel_z(t_fdf *data);
 
 // read_file.c
 static int	ft_word_count_fdf(char const *s, char c);
